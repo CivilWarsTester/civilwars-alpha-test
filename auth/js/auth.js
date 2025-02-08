@@ -2,6 +2,8 @@ const registrationForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 const chosenCiv = localStorage.getItem('selectedCivilization') || null;
 
+let betaTesters = ['#04letíb1'];
+
 function isEmailValid(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -19,62 +21,62 @@ function generatePlayerTag() {
     return playerTag;
 }
 
-if(registrationForm) {
+if (registrationForm) {
     registrationForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    
-    const username = document.getElementById('username').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const confirmEmail = document.getElementById('confirmEmail').value.trim();
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const age = parseInt(document.getElementById('age').value, 10);
+        event.preventDefault();
 
-    if (!username || !email || !confirmEmail || !password || !confirmPassword || !age) {
-        alert('All fields are required!');
-        return;
-    }
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const confirmEmail = document.getElementById('confirmEmail').value.trim();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const age = parseInt(document.getElementById('age').value, 10);
 
-    if (!isEmailValid(email)) {
-        alert('Invalid email format!');
-        return;
-    }
+        if (!username || !email || !confirmEmail || !password || !confirmPassword || !age) {
+            alert('All fields are required!');
+            return;
+        }
 
-    if (email !== confirmEmail) {
-        alert('Email do not match!');
-        return;
-    }
+        if (!isEmailValid(email)) {
+            alert('Invalid email format!');
+            return;
+        }
 
-    if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
+        if (email !== confirmEmail) {
+            alert('Email do not match!');
+            return;
+        }
 
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userExists = users.some(user => user.username === username || user.email === email);
+        if (password !== confirmPassword) {
+            alert('Passwords do not match!');
+            return;
+        }
 
-    if (userExists) {
-        alert('A user with this username already exists!');
-        return;
-    }
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const userExists = users.some(user => user.username === username || user.email === email);
 
-    const newUser = {
-        username,
-        email,
-        password,
-        age,
-        playerTag: generatePlayerTag()
-    };
+        if (userExists) {
+            alert('A user with this username already exists!');
+            return;
+        }
 
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
+        const newUser = {
+            username,
+            email,
+            password,
+            age,
+            playerTag: generatePlayerTag()
+        };
 
-    alert('Redirecting to the login page...');
-    window.location.href = './login.html'; 
-});
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert('Redirecting to the login page...');
+        window.location.href = './login.html';
+    });
 }
 
-if(loginForm) {
+if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('username').value.trim();
@@ -90,12 +92,19 @@ if(loginForm) {
 
         localStorage.setItem('loggedInUser', JSON.stringify(user));
         alert('Login successful! Redirecting to CivilWars!');
-        if(chosenCiv === null || !chosenCiv) window.location.href = './civilization_chooser.html';
+        if (chosenCiv === null || !chosenCiv) window.location.href = './civilization_chooser.html';
         else window.location.href = '../index.html';
     });
 }
 
+const isBetaTester = () => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const userTag = loggedInUser.playerTag;
+    if(betaTesters.includes(userTag)) return;
+    else window.location.href = './nonbeta.html';
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
-    if(isMobile) window.location.href = './mobile.html';
+    if (isMobile) window.location.href = './mobile.html';
 });
