@@ -1,25 +1,25 @@
 # CIVILWARS - Work in Progress Civilization Game
 
 ---
-## CivilWars - Alpha v1.2.0 - The Exploration Update
+## CivilWars - Alpha v1.2.0 - Player Level Update
 
-CivilWars next huge update is arriving soon! The theme of it will be Exploration, so the <ins>Explore button</ins> will get its functionality.
+CivilWars next huge update is arriving soon! The theme of it will be the leveling system.
+Yes, finally you will get XP for your game interactions, so another crucial feature gets added!
 The game gets enhanced and upgraded as the UI will remain the same (no UI upgrade soon)!
-New goals, new features, new buildings... That's the Exploration Update
+New goals, new features, new UI elements... That's Player Level Update
 
 ### Here is the list of all the <ins>planned features:</ins>
 
-* World Map gets added
-* Exploration gets added as a whole
-* World Map's area will be from -100 to 100 coordinates
-* New way of collecting resources (buttons and new calculation system, arriving in Alpha v1.1.1)
-* New buildings: Intel and Outpost (dependent of each other)
-* Exploration: Intel-like game mechanism
-* Intel level system and quests based on the Intel's level
+* Player Level gets reworked
+* XP counts after upgrade and build
+* XP Level caps/border will be added and calculated
+* 25 levels gets added initially and later it will be extended
+* Idle XP farming gets added (you will get some XP for just AFK-ing)
+* Titles/ranks and buffs comes with certain levels (jubilee levels and so on)
 
 For now, that's it. These are the features planned to be released by Alpha v1.2.0.
 
-### CivilWars - Alpha v1.2.0 - The Exploration Update - coming on March 26th, 2025
+### CivilWars - Alpha v1.2.0 - Player Level Update - coming on March 26th, 2025
 
 Stay tuned for more details!
 If you want to find out what CivilWars is, read the article below!
