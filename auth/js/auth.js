@@ -2,7 +2,7 @@ const registrationForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 const chosenCiv = localStorage.getItem('selectedCivilization') || null;
 
-let betaTesters = ['#04letíb1'];
+let betaTesters = ['#8höUvŰES' /* Dave Summer, lead developer */];
 
 function isEmailValid(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
