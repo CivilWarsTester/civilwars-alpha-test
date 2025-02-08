@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>CivilWars</title>
+    <link referrerpolicy="origin" rel="stylesheet" type="text/css" href="./css/game_layout.css" />
+    <link rel="icon" type="ico/image" href="./assets/images/favicon.ico" />
+
+</head>
+
+<body class="game-bg">
+    <header>
+        <h1>Welcome to <a href="https://github.com/DaveSummer36/civilwars-test/">CivilWars</a>' Official Website</h1>
+    </header>
+
+    <button id="profileButton">Profile</button>
+
+    <div id="notification" class="notification">
+        <div id="notification-header"></div>
+        <div id="notification-message"></div>
+        <div id="loading-bar"></div>
+    </div>
+    
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span id="close-button">&times;</span>
+            <h2>Player Profile</h2>
+            <p><strong>Elapsed time: <span id="timer">00:00:00</span></strong></p>
+            <p>---------------------------------------------------------------------------</p>
+            <p><strong>Username:</strong> <span id="profileUsername"></span></p>
+            <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+            <p><strong>Civilization:</strong> <span id="profileCiv"></span></p>
+            <p><strong>Level:</strong> <span id="profileLevel"></span></p>
+            <p><strong>XP:</strong> <span id="profileXP"></span></p>
+            <p><strong>Player Tag:</strong> <span id="playerTag"></span></p>
+            <button id="logoutButton">Logout</button>
+        </div>
+    </div>
+
+    <div id="releaseModal" class="modal">
+        <div class="modal-content">
+            <span id="closeRM-button">&times;</span>
+            <h2>CivilWars - Alpha v1.1.1 - New Features</h2>
+            <h4 style="text-align: center;">Coming on February 1st, 2025</h4>
+            <ul style="list-style: none;">
+                <li>New resource collection mechanism</li>
+                <li>New resource calculation mechanism</li>
+                <li>Population now gets calculated as it should be</li>
+                <li>Elapsed time based resource collection instead of getting in every 5 seconds</li>
+            </ul>
+
+            <p>Later on, it will be developed further and will be enhanced!</p>
+        </div>
+    </div>
+
+    <div id="releaseModal2" class="modal">
+        <div class="modal-content">
+            <span id="closeRM2-button">&times;</span>
+            <h2>CivilWars - Alpha v1.1.2 - Update</h2>
+            <h4 style="text-align: center;">Coming on February 15st, 2025</h4>
+            <ul style="list-style: none;">
+                <li>Experimental features' materials removed</li>
+                <li>Merging the two collection buttons into one</li>
+                <li>Say goodbye to alerts, introducing popup notifications</li>
+                <li>Timer from top right moves to profile modal as it has no effect on the game</li>
+            </ul>
+
+            <p>Time until update: <span id="timeUntil"></span></p>
+        </div>
+    </div>
+
+    <main>
+        <section id="resources">
+            <h2>Your resources</h2>
+            <div id="resource-collection">
+                <button id="resourceBtn" onclick="collectResources()">Collect Resources</button>
+                <p id="collect-food"><strong>Food: <span id="collectible-food"></strong></span></p>
+                <p id="collect-gold"><strong>Gold: <span id="collectible-gold"></strong></span></p>
+            </div>
+            <p>Population: <span id="population">0</span></p>
+            <p>Food: <span id="food">0</span></p>
+            <p>Gold: <span id="gold">0</span></p>
+
+            <h3>Buildings</h3>
+            <p>Farms: <span id="farms">2</span></p>
+            <p>Houses: <span id="houses">2</span></p>
+            <p>Mines: <span id="mines">2</span></p>
+        </section>
+
+        <section id="actions">
+            <h2>Actions</h2>
+            <div id="buildingActions">
+                <!-- Building actions to be rendered here -->
+                 
+            </div>
+            <button onclick="explore()" disabled>Explore</button>
+            <button onclick="trade()" disabled>Trade</button>
+            <button id="worldMapButton">World Map</button>
+        </section>
+
+        <section id="newsFeed">
+            <h2>CivilWars News</h2>
+            <div id="newsContent">
+                <!-- NewsFeed content goes here -->
+
+                <div class="article-card">
+                    <img src="./assets/images/background2.png" alt="Game background" class="thumbnail" />
+                    <div class="content">
+                        <h3>CivilWars - Alpha v1.1.2 announced</h3>
+                        <p>See more details after clicking on 'Read More'!</p>
+                        <p class="read-more" id="releaseModalP2">Read More</p>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <img src="./assets/images/background1.png" alt="Game background" class="thumbnail" />
+                    <div class="content">
+                        <h3>CivilWars - Alpha v1.1.1 IS HERE!!!</h3>
+                        <p>See more details after clicking on 'Read More'!</p>
+                        <p class="read-more" id="releaseModalP">Read More</p>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <img src="./assets/images/register_background.png" alt="Game background" class="thumbnail" />
+                    <div class="content">
+                        <h3>CivilWars Alpha v1.2.0 - Player Level Update</h3>
+                        <p>See more details on GitHub!</p>
+                        <a href="https://github.com/DaveSummer36/civilwars-test" target="_blank" class="read-more">Read More</a>
+                    </div>
+                </div>
+
+                <div class="article-card">
+                    <img src="./assets/images/register_background.png" alt="Game background" class="thumbnail" />
+                    <div class="content">
+                        <h3>CivilWars Alpha v1.1.0 is here!</h3>
+                        <p>Read the release notes on Github!</p>
+                        <a href="https://github.com/DaveSummer36/civilwars-test" target="_blank" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="./js/gameloop.js"></script>
+    <script type="module" src="./js/misc/modal.js"></script>
+    <script type="module" src="./js/misc/notification.js"></script>
+    <script type="text/javascript" src="./js/misc/global.js"></script>
+    <script type="text/javascript" src="./js/misc/profile.js"></script>
+</body>
+</html>
