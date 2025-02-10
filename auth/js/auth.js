@@ -4,6 +4,13 @@ const chosenCiv = localStorage.getItem('selectedCivilization') || null;
 
 let betaTesters = ['#8höUvŰES' /* Dave Summer, lead developer */];
 
+const isBetaTester = () => {
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    const userTag = loggedInUser.playerTag;
+    if(betaTesters.includes(userTag)) return;
+    else window.location.href = './nonbeta.html';
+};
+
 function isEmailValid(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -92,17 +99,11 @@ if (loginForm) {
 
         localStorage.setItem('loggedInUser', JSON.stringify(user));
         alert('Login successful! Redirecting to CivilWars!');
+        isBetaTester();
         if (chosenCiv === null || !chosenCiv) window.location.href = './civilization_chooser.html';
         else window.location.href = '../index.html';
     });
 }
-
-const isBetaTester = () => {
-    const loggedInUser = localStorage.getItem('loggedInUser');
-    const userTag = loggedInUser.playerTag;
-    if(betaTesters.includes(userTag)) return;
-    else window.location.href = './nonbeta.html';
-};
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
