@@ -4,7 +4,7 @@ const chosenCiv = localStorage.getItem('selectedCivilization') || null;
 
 let betaTesters = [];
 
-function checkBetaTester() {
+export function checkBetaTester() {
     const loggedInUser = localStorage.getItem('loggedInUser');
     const userTag = loggedInUser.playerTag;
     if(Object.values(betaTesters).includes(userTag) && (chosenCiv === null || !chosenCiv)) window.location.href = './civilization_chooser.html';
