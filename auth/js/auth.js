@@ -2,13 +2,13 @@ const registrationForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
 const chosenCiv = localStorage.getItem('selectedCivilization') || null;
 
-let betaTesters = ['#8höUvŰES' /* Dave Summer, lead developer */];
+let betaTesters = [];
 
-const isBetaTester = () => {
+function checkBetaTester() {
     const loggedInUser = localStorage.getItem('loggedInUser');
     const userTag = loggedInUser.playerTag;
-    if(betaTesters.includes(userTag)) return;
-    else window.location.href = './nonbeta.html';
+    if(Object.values(betaTesters).includes(userTag) && (chosenCiv === null || !chosenCiv)) window.location.href = './civilization_chooser.html';
+    else if(!Object.values(betaTesters).includes(userTag)) window.location.href = './nonbeta.html';
 };
 
 function isEmailValid(email) {
@@ -99,11 +99,10 @@ if (loginForm) {
 
         localStorage.setItem('loggedInUser', JSON.stringify(user));
         alert('Login successful! Redirecting to CivilWars!');
-        isBetaTester();
-        if (chosenCiv === null || !chosenCiv) window.location.href = './civilization_chooser.html';
-        else window.location.href = '../index.html';
     });
 }
+
+document.getElementById('submitBtn').addEventListener('click', () => checkBetaTester());
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
