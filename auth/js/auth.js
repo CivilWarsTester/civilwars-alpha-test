@@ -1,5 +1,6 @@
 const registrationForm = document.getElementById('registerForm');
 const loginForm = document.getElementById('loginForm');
+const submitBtn = document.getElementById('submitBtn');
 const chosenCiv = localStorage.getItem('selectedCivilization') || null;
 
 let betaTesters = [];
@@ -102,7 +103,7 @@ if (loginForm) {
     });
 }
 
-document.getElementById('submitBtn').addEventListener('click', () => checkBetaTester());
+submitBtn.addEventListener('click', () => checkBetaTester());
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent);
